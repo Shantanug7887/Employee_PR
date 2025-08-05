@@ -1,0 +1,53 @@
+﻿@model List<Employee>
+@{
+    int SerialNumber=1;
+}
+<h2>Employee List</h2>
+<p>
+    <a asp-action="Create" class="btn btn-Success">
+        <i class="bi bi-plus"></i> Create New Employee
+    </a>
+</p>
+
+
+
+<table class="table table-striped text-center table-hover ">
+    <thead
+        class="table-dark">
+        <tr>
+            <th>Sr.No</th>
+            <th>FullName</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>JoinDate</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@(SerialNumber++)</td>
+                <td>@employee.FullName</td>
+                <td>@employee.Email</td>
+                <td>@employee.DepartmentId</td>
+                <td>@employee.JoinDate.ToShortDateString()</td>
+           
+            
+          <td>
+              
+
+                <a asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-primary">
+                    <i class="bi bi-pencil-square"></i> Edit
+                </a>
+                <a asp-action="Details" asp-route-id="@employee.Id" class="btn btn-info">
+                    <i class="bi bi-eye"></i> Details
+                </a>
+                <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Delete
+                </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
