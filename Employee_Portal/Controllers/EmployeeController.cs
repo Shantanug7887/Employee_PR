@@ -20,6 +20,8 @@ namespace Employee_Portal.Controllers
 
 
         }
+
+        [HttpGet]
         public async Task<IActionResult> Create()
         {
             DepartmentVM departmentViewModel = new DepartmentVM();
